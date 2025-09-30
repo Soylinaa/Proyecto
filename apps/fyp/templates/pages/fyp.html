@@ -1,0 +1,32 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Preguntas Frecuentes</h1>
+
+    <div class="accordion" id="faqAccordion">
+        {% for item in fyp_list %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false"
+                    aria-controls="collapse{{ forloop.counter }}">
+                    {{ item.pregunta }}
+                </button>
+            </h2>
+            <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse"
+                aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    {{ item.respuesta }}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">No hay preguntas registradas aún.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

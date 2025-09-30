@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicio, name="inicio"),
     path('registro/', include('apps.formulario.urls')),
+    path('fyp/', include('apps.fyp.urls')),
 ]
