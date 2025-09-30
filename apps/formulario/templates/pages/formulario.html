@@ -1,0 +1,115 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div id="registro-form">
+    <div class="container my-5">
+        <h1>Registro</h1>
+
+        <!-- Mostrar errores generales -->
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form id="demo-form" method="post" novalidate>
+            {% csrf_token %}
+
+            <!-- Nombre completo -->
+            <div class="form-group">
+                {{ form.nombre_completo.label_tag }}
+                {{ form.nombre_completo }}
+                {% if form.nombre_completo.errors %}
+                    <div class="text-danger small">
+                        {{ form.nombre_completo.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="text-danger small">
+                        {{ form.email.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Contraseña -->
+            <div class="form-group">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <div class="text-danger small">
+                        {{ form.password.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Confirmar contraseña -->
+            <div class="form-group">
+                {{ form.confirm_password.label_tag }}
+                {{ form.confirm_password }}
+                {% if form.confirm_password.errors %}
+                    <div class="text-danger small">
+                        {{ form.confirm_password.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Fecha de nacimiento -->
+            <div class="form-group">
+                {{ form.fecha_nacimiento.label_tag }}
+                {{ form.fecha_nacimiento }}
+                {% if form.fecha_nacimiento.errors %}
+                    <div class="text-danger small">
+                        {{ form.fecha_nacimiento.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Celular -->
+            <div class="form-group">
+                {{ form.celular.label_tag }}
+                {{ form.celular }}
+                {% if form.celular.errors %}
+                    <div class="text-danger small">
+                        {{ form.celular.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Teléfono (opcional) -->
+            <div class="form-group">
+                {{ form.telefono.label_tag }}
+                {{ form.telefono }}
+                {% if form.telefono.errors %}
+                    <div class="text-danger small">
+                        {{ form.telefono.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Acepto términos -->
+            <div class="form-group form-check">
+                {{ form.acepta_terminos }} {{ form.acepta_terminos.label_tag }}
+                {% if form.acepta_terminos.errors %}
+                    <div class="text-danger small">
+                        {{ form.acepta_terminos.errors.0 }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        <script src="{% static 'main/scripts/formulario.js' %}"></script>
+    </div>
+</div>
+{% endblock %}
