@@ -1,0 +1,54 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Perritos{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Perritos</h2>
+    <div class="row g-4">
+        {% for perrito in perros %}
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm text-center p-3">
+                <!-- Imagen circular con tamaño fijo -->
+                <div class="img-circle mx-auto mb-3"
+                    style="width:150px; height:150px; overflow:hidden; min-height:150px;">
+                    <img src="{{ perrito.imagen }}" alt="{{ perrito.titulo }}" class="rounded-circle w-100 h-100"
+                        style="object-fit: cover;">
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ perrito.titulo }}</h5>
+                    <h6 class="card-subtitle text-muted">{{ perrito.resumen }}</h6>
+                    <p class="card-text mt-2">{{ perrito.descripcion }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ perrito.link_detalle }}" target="_blank" class="btn btn-primary">
+                        🐾 Conoce más sobre este perrito
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<style>
+.img-circle img {
+    transition: none !important;
+    opacity: 1 !important;
+}
+
+.img-circle {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.img-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
+{% endblock %}

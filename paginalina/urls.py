@@ -23,4 +23,5 @@ urlpatterns = [
     path('', inicio, name="inicio"),
     path('registro/', include('apps.formulario.urls')),
     path('fyp/', include('apps.fyp.urls')),
+    path('perritos/', include('apps.perritos.urls')),
 ]
